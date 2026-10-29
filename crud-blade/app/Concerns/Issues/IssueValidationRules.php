@@ -1,8 +1,6 @@
 <?php
 
-namespace App\Concerns;
-
-use App\Models\Issue;
+namespace App\Concerns\Issues;
 
 trait IssueValidationRules {
 
@@ -34,7 +32,7 @@ trait IssueValidationRules {
 
     protected function issueDescriptionRules(): array
     {
-        return ['required', 'text', 'max:255'];
+        return ['nullable', 'string', 'max:255'];
     }
 
     /**
@@ -43,7 +41,7 @@ trait IssueValidationRules {
 
     protected function issueStatusRules(): array
     {
-        return ['required', 'enum:open,in_progress,closed'];
+        return ['required', 'in:open,in_progress,closed'];
     }
 
     /**
@@ -52,7 +50,7 @@ trait IssueValidationRules {
 
     protected function issuePriorityRules(): array
     {
-        return ['required', 'enum:low,medium,high'];
+        return ['required', 'in:low,medium,high'];
     }
 
     /**
@@ -61,6 +59,6 @@ trait IssueValidationRules {
 
     protected function issueTypeRules(): array
     {
-        return ['required', 'enum:bug,feature,task'];
+        return ['required', 'in:bug,feature,task'];
     }
 }
