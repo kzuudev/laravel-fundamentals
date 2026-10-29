@@ -25,5 +25,15 @@ class IssueController extends Controller {
         
     }
 
+    public function update(IssueUpdateRequest $request, Issues $issue): RedirectResponse
+    {
+        $issue->update($request->validated());
+
+        return redirect()->route('issue.index', $issue->id)->with('success', 'Issue updated successfully');
+    }
+
+
+
+
     
 }
