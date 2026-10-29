@@ -32,7 +32,12 @@ class IssueController extends Controller {
         return redirect()->route('issue.index', $issue->id)->with('success', 'Issue updated successfully');
     }
 
-
+    public function show(Issues $issue): View
+    {
+        return view('issues.show', [
+            'issue' => $issue
+        ]);
+    }
 
 
     
