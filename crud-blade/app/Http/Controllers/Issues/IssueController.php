@@ -39,6 +39,14 @@ class IssueController extends Controller {
         ]);
     }
 
+    public function destroy(IssueDeleteRequest $request, Issues $issue): RedirectResponse 
+    {
+        $issue->delete();
+
+        return redirect()->route('issue.index')->with('success', 'Issue deleted successfully');
+    }
+
+
 
     
 }
